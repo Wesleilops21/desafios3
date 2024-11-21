@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calculadora de Juros Compostos</title>
+</head>
+
+<body>
+    <h1>Calculadora de Juros Compostos</h1>
+
+    <label for="valorInicial">Valor Inicial (R$):</label>
+    <input type="number" id="valorInicial" step="0.01" required><br><br>
+
+    <label for="taxaJuros">Taxa de Juros Anual (%):</label>
+    <input type="number" id="taxaJuros" step="0.01" required><br><br>
+
+    <label for="numAnos">Número de Anos:</label>
+    <input type="number" id="numAnos" step="1" required><br><br>
+
+    <button onclick="calcularJuros()">Calcular Montante</button>
+
+    <section id="resultado">
+        <p>O resultado é:</p>
+    </section>
+
+    <script>
+        function calcularJuros() {
+            // Obtendo valores dos campos
+            let valorInicial = Number(document.getElementById('valorInicial').value);
+            let taxaJuros = Number(document.getElementById('taxaJuros').value);
+            let numAnos = Number(document.getElementById('numAnos').value);
+
+            // Calculando o montante com juros compostos
+            let montante = valorInicial * Math.pow(1 + (taxaJuros / 100), numAnos);
+
+            // Exibindo o resultado
+            let resultado = document.getElementById('resultado');
+            resultado.innerHTML = `<p>Com um valor inicial de R$ ${valorInicial.toFixed(2)}, uma taxa de juros anual de ${taxaJuros.toFixed(2)}% e um período de ${numAnos} anos, o montante final será R$ ${montante.toFixed(2)}.</p>`;
+        }
+    </script>
+</body>
+
+</html>
